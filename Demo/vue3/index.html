@@ -16,41 +16,11 @@
 			}
 		</script>
 		<script type="module">
-			import { createApp } from 'vue';
-			import MyComponent from './my-component.js';
+			import { createApp } from "vue";
+			import MyComponent from "./my-component.js";
 
-			createApp(MyComponent).mount('#app');
+			createApp(MyComponent).mount("#app");
 		</script>
-		<script>
-			/**
-			 * 剩余参数
-			 */
-			function $arguments() {
-				console.log(arguments);
-				switch (arguments.length) {
-					case 0:
-						console.log(0);
-						break;
-					case 1:
-						console.log(2);
-						break;
-					case 2:
-						console.log(2);
-						break;
-					case 3:
-						console.log(3);
-						break;
-					case 4:
-						console.log(4);
-						break;
-
-					default:
-						console.log(Object.keys(arguments));
-						break;
-				}
-			}
-
-			$arguments(1, '2', { 3: 3 }, [4], '555');
-		</script>
+		<script></script>
 	</body>
 </html>
