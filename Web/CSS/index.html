@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -8,13 +7,12 @@
 		<title>to center</title>
 		<style>
 			/*
-        	  第一种方法(需要知道宽高)
-        	  给父级padding
-        	  由于父级默认盒模型是content-box，padding会改变盒子大小，所以要给父级设置为border-box
-        	  数值为
-        	  top：自身高一半 - 子级高一半
-        	  left：自身宽一半 - 子级宽一半
-     		*/
+        第一种方法(需要知道宽高)
+        给父级padding，由于父级默认盒模型是content-box，padding会改变盒子大小，所以要给父级设置为border-box
+        padding数值为
+        top：自身高一半 - 子级高一半
+        left：自身宽一半 - 子级宽一半
+      */
 			.first {
 				background-color: #0088ff;
 				height: 100px;
@@ -29,12 +27,12 @@
 				width: 20px;
 			}
 			/*
-        	  第二种方法(需要知道宽高)
-        	  给子级加margin，数值为
-        	  top：父级高一半 - 自身高一半
-        	  left：父级高一半 - 自身高一半
-        	  为防止子父垂直外边距重叠，应给父元素触发BFC结界
-     	*/
+        第二种方法(需要知道宽高)
+        给子级加margin，数值为
+        top：父级高一半 - 自身高一半
+        left：父级高一半 - 自身高一半
+        为防止子父垂直外边距重叠，应给父元素触发BFC结界
+      */
 			.clear-fix {
 				display: table;
 				content: "";
@@ -51,9 +49,9 @@
 				margin: 40px 0 0 40px;
 			}
 			/*
-        	  第三种方法(不需要知道宽高)
-        	  利用弹性布局，设置主轴中心对齐和交叉轴中心对齐
-      		*/
+        第三种方法(不需要知道宽高)
+        利用弹性布局，设置主轴中心对齐和交叉轴中心对齐
+      */
 			.third {
 				background-color: #ff8800;
 				height: 100px;
@@ -70,9 +68,9 @@
 				width: 20px;
 			}
 			/*
-        	  第四种方法(不需要知道宽高)
-        	  利用弹性布局，设置flex再利用子元素margin的auto属性，使子元素居中
-      	  	*/
+        第四种方法(不需要知道宽高)
+        利用弹性布局，设置flex再利用子元素margin的auto属性，使子元素居中
+      */
 			.fourth {
 				background-color: #ff0088;
 				height: 100px;
@@ -87,11 +85,11 @@
 				margin: auto;
 			}
 			/*
-        	  第五种方法(需要知道宽高)
-        	  利用相对定位，直接把子元素定位到中心
-        	  top：40px
-        	  left：40px
-      		*/
+        第五种方法(需要知道宽高)
+        利用相对定位，直接把子元素定位到中心
+        top：40px
+        left：40px
+      */
 			.fifth {
 				background-color: #8800ff;
 				height: 100px;
@@ -106,14 +104,14 @@
 				left: 40px;
 			}
 			/*
-        	  第六种方法(不需要知道宽高)
-        	  利用相对定位，先把子元素其中一角定位到父元素中心，例如【左上角】
-        	  top: 50%
-        	  left: 50%
-        	  再用transform属性设置translate函数向自身居中的角【左上角】的方向移动子元素自身宽高的50%
-        	  top：50%
-        	  left：50%
-      	  	*/
+        第六种方法(不需要知道宽高)
+        利用相对定位，先把子元素其中一角定位到父元素中心，例如【左上角】
+        top: 50%
+        left: 50%
+        再用transform属性设置translate函数向自身居中的角【左上角】的方向移动子元素自身宽高的-50%
+        X：-50%
+        Y：-50%
+      */
 			.sixth {
 				background-color: #ff0088;
 				height: 100px;
@@ -153,4 +151,3 @@
 		</div>
 	</body>
 </html>
-```
