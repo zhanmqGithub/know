@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>to center</title>
+		<style>
+			.parent-size {
+				height: 100px;
+				width: 100px;
+			}
+			.children-size {
+				height: 20px;
+				width: 20px;
+			}
+			/* 第一种方法(需要知道宽高) */
+			/* 给父级padding */
+			/* 父级盒模型是content-box时会改变盒子大小，所以要给父级设置为border-box */
+			/* top：自身高度50% - 子级高度50% */
+			/* left：自身高度50% - 子级高度50% */
+			.first {
+				background-color: #0088ff;
+				/* 修改盒模型 */
+				box-sizing: border-box;
+				padding: 40px 0 0 40px;
+			}
+			.first-children {
+				background-color: #ffffff;
+			}
+			/* 第二种方法(需要知道宽高) */
+			/* 给子级加margin */
+			/* top：父级高度50% - 自身高度50% */
+			/* left：父级高度50% - 自身高度50% */
+			/* 为防止子父垂直外边距重叠，应给父元素触发BFC结界 */
+			.clear-fix {
+				display: table;
+				content: "";
+			}
+			.second {
+				background-color: #00ff88;
+			}
+			.second-children {
+				background-color: #ffffff;
+				margin: 40px 0 0 40px;
+			}
+			/* 第三种方法(不需要知道宽高) */
+			/* 利用弹性布局，设置主轴中心对齐和交叉轴中心对齐 */
+			.third {
+				background-color: #ff8800;
+				display: flex;
+				/* 主轴中心对齐 */
+				justify-content: center;
+				/* 交叉轴中心对齐 */
+				align-items: center;
+			}
+			.third-children {
+				background-color: #ffffff;
+			}
+			/* 第四种方法(不需要知道宽高) */
+			/* 利用弹性布局，设置flex再给子元素margin设置为auto，使子元素居中 */
+			.fourth {
+				background-color: #ff0088;
+				display: flex;
+			}
+			.fourth-children {
+				background-color: #ffffff;
+				/* MDN：让浏览器自己选择一个合适的外边距。有时，在一些特殊情况下，该值可以使元素居中。 */
+				/* 参阅：https://developer.mozilla.org/zh-CN/docs/Web/CSS/margin */
+				margin: auto;
+			}
+			/* 第五种方法(需要知道宽高) */
+			/* 利用相对定位，计算数值后直接把子元素定位到中心 */
+			.fifth {
+				background-color: #8800ff;
+			}
+			.fifth-children {
+				background-color: #ffffff;
+				position: relative;
+				top: 40px;
+				left: 40px;
+			}
+			/* 第六种方法(不需要知道宽高) */
+			/* 利用相对定位，先把子元素移动父元素宽高的50% */
+			/* 再用transform属性设置translate函数移动子元素自身宽高的-50% */
+			.sixth {
+				background-color: #ff0088;
+			}
+			.sixth-children {
+				background-color: #ffffff;
+				position: relative;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="first parent-size">
+			<div class="first-children children-size">1</div>
+		</div>
+		<!-- 父元素加clear-fix触发BFC结界 -->
+		<div class="second parent-size clear-fix">
+			<div class="second-children children-size">2</div>
+		</div>
+		<div class="third parent-size">
+			<div class="third-children children-size">3</div>
+		</div>
+		<div class="fourth parent-size">
+			<div class="fourth-children children-size">4</div>
+		</div>
+		<div class="fifth parent-size">
+			<div class="fifth-children children-size">5</div>
+		</div>
+		<div class="sixth parent-size">
+			<div class="sixth-children children-size">6</div>
+		</div>
+	</body>
+</html>
