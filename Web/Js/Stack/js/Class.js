@@ -1,6 +1,6 @@
 /**
  * @alias 栈 类
- * @author 梁雨
+ * @author ily
  */
 class Stack {
 	constructor() {

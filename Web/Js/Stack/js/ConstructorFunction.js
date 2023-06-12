@@ -1,6 +1,6 @@
 /**
  * @alias 栈 构造函数
- * @author 梁雨
+ * @author ily
  * @returns {Stack}
  */
 function Stack() {
