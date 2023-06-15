@@ -3,7 +3,7 @@
  */
 
 /**
- * @alias split 拆分字符串
+ * @alias 拆分字符串
  * @param {string|number|boolean} value
  * @returns {Array<string>}
  * @author ily
@@ -11,16 +11,16 @@
 const split = value => value.toString().toLowerCase().trim().split("");
 
 /**
- * @alias has 包含
+ * @alias 包含
  * @param {string|number|boolean} value
  * @param {string|number|boolean} key
  * @returns {boolean}
  * @author ily
  */
-const has = (value, key) => value.toString().toLowerCase().indexOf(key) > -1;
+const includes = (value, key) => value.toString().toLowerCase().indexOf(key) > -1;
 
 /**
- * @alias searchByKeyword 单关键字搜索
+ * @alias 单关键字搜索
  * @param {string|number} keyword 关键字
  * @param {Array<string>} fields 筛选的字段
  * @param {Array<any>} dataSource 数据源s
@@ -29,11 +29,11 @@ const has = (value, key) => value.toString().toLowerCase().indexOf(key) > -1;
  */
 function searchByKeyword(keyword, fields, dataSource) {
 	const key = keyword.toString().toLowerCase().trim();
-	return dataSource.filter(el => fields.some(item => has(el[item], key)));
+	return dataSource.filter(el => fields.some(item => includes(el[item], key)));
 }
 
 /**
- * @alias searchByKeywords 多关键字搜索
+ * @alias 多关键字搜索
  * @param {Object} keywords 筛选的字段及对应的关键字
  * @param {Array<any>} dataSource 数据源
  * @returns {Array<any>} 筛选后的数据
@@ -42,7 +42,7 @@ function searchByKeywords(keywords, dataSource) {
 	return dataSource.filter(el => {
 		const keys = Object.keys(keywords);
 		return keys.every(key => {
-			return has(el[key], keywords[key]);
+			return includes(el[key], keywords[key]);
 		});
 	});
 }
@@ -57,7 +57,7 @@ function searchByKeywords(keywords, dataSource) {
  */
 function fuzzySearchByKeyword(keyword, fields, dataSource) {
 	const keys = split(keyword);
-	return dataSource.filter(element => fields.some(item => keys.some(value => has(element[item], value))));
+	return dataSource.filter(element => fields.some(item => keys.some(value => includes(element[item], value))));
 }
 
 /**
@@ -72,7 +72,7 @@ function fuzzySearchByKeywords(keywords, dataSource) {
 		const keys = Object.keys(keywords);
 		return keys.every((key, key_i) => {
 			const fuzzyKeys = split(keywords[key]);
-			return fuzzyKeys.some(value => has(el[keys[key_i]], value));
+			return fuzzyKeys.some(value => includes(el[keys[key_i]], value));
 		});
 	});
 }
@@ -80,4 +80,4 @@ function fuzzySearchByKeywords(keywords, dataSource) {
 /**
  * 导出
  */
-export default { searchByKeyword, searchByKeywords, fuzzySearchByKeyword, fuzzySearchByKeywords };
+export { searchByKeyword, searchByKeywords, fuzzySearchByKeyword, fuzzySearchByKeywords };
